@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  web:
+    container_name: web
+    build: .
+    ports:
+      - "8888:80"
+    volumes:
+      - ./server:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+    # コンテナ内の環境変数を指定。環境変数を渡すとビルド時に設定してくれるDockerイメージがあるので、利用の際はDocker Hubのサイトで確認する
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: manage_weight
+      MYSQL_USER: hiro
+      MYSQL_PASSWORD: Hiro4040
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+    # ディレクトリ同期。設定ファイルとMySQLのデータが保存される場所を同期している。コンテナは基本的に起動時に変更されてもコンテナ自体が止まるとデータが消えてしまうため、保存しておきたいものはホストマシンと同期しておく必要がある。
+      - ./Docker/db/data:/var/lib/mysql
+      - ./Docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./Docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - '3306:3306'
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mysql
+      - PMA_USER=hiro
+      - PMA_PASSWORD=Hiro4040
+    ports:
+      - 8080:80
+    depends_on:
+      - db
