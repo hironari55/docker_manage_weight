@@ -10,6 +10,7 @@ services:
       - ./server:/var/www/html
     depends_on:
       - db
+      - mail
 
   db:
     image: mysql:5.7
@@ -18,8 +19,8 @@ services:
     # コンテナ内の環境変数を指定。環境変数を渡すとビルド時に設定してくれるDockerイメージがあるので、利用の際はDocker Hubのサイトで確認する
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: manage_weight
-      MYSQL_USER: hiro
-      MYSQL_PASSWORD: Hiro4040
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
       TZ: 'Asia/Tokyo'
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
@@ -36,9 +37,21 @@ services:
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOSTS=mysql
-      - PMA_USER=hiro
-      - PMA_PASSWORD=Hiro4040
+      - PMA_USER=docker
+      - PMA_PASSWORD=docker
     ports:
       - 8080:80
     depends_on:
       - db
+
+  mail:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    environment:
+      MH_STORAGE: maildir
+      MH_MAILDIR_PATH: /tmp
+    volumes:
+      - ./Docker/maildir:/tmp
