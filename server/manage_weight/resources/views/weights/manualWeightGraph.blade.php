@@ -3,7 +3,7 @@
 @section('title', 'manualWeightList')
 
 @section('content')
-<div class="card border-info mt-5 shadow-sm text-center">
+<div class="card border-info mt-3 shadow-sm text-center">
     <div class="card-header bg-transparent border-info text-info">
         折れ線グラフ画面使い方
     </div>

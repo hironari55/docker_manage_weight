@@ -3,7 +3,7 @@
 @section('title', 'manualWeightList')
 
 @section('content')
-<div class="card border-info mt-5 shadow-sm text-info text-center">
+<div class="card border-info mt-3 shadow-sm text-info text-center">
     <div class="card-header bg-transparent border-info">
         記録リスト画面使い方
     </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="card border-info mt-5 shadow-sm">
+<div class="card border-info  shadow-sm">
     <div class="card-header bg-transparent border-info text-info d-flex justify-content-between align-items-center">
         @if(!empty($previousDayWeight))
         <a href="{{ route('weights.index',['weight' => $previousDayWeight->id]) }}" class="text-align-center"><i class="fas fa-angle-left fa-2x"></i></a>

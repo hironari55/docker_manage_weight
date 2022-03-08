@@ -3,7 +3,7 @@
 @section('title', 'manual')
 
 @section('content')
-<div class="card border-info mt-5 shadow-sm">
+<div class="card border-info mt-3 shadow-sm">
     <div class="card-header bg-transparent border-info text-info d-flex justify-content-between align-items-center">
         アプリ使い方
     </div>

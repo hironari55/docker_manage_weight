@@ -3,7 +3,7 @@
 
 @include('share.view.head')
 
-<body style="background-color: #F8F8FF">
+<body class="pb-3"style="background-color: #F8F8FF">
     <div id="app">
         @include('share.view.navbar')
 

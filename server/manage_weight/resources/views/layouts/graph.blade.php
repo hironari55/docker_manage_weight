@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-@include('share.view.head');
+@include('share.view.head')
 
-<body style="background-color: #F8F8FF">
+<body class="pb-3" style="background-color: #F8F8FF">
     <div id="app">
         @include('share.view.navbar')
 
-        <main class="pt-5 mt-5">
+        <main class="pt-5 mt-3">
             <div class="container">
                 <div class="d-flex">
                     @yield('content')
@@ -18,7 +18,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{ route('weights.weekGraph', ['id' => $data_id]) }}">週間</a>
                             <a class="dropdown-item" href="{{ route('weights.oneMonthGraph', ['id' => $data_id]) }}">月間</a>
-                            <a class="dropdown-item" href="{{ route('weights.threeMonthGraph', ['id' => $data_id]) }}">３ヶ月</a>
+                            <a class="dropdown-item" href="{{ route('weights.threeMonthGraph', ['id' => $data_id]) }}">3ヶ月</a>
                             <a class="dropdown-item" href="{{ route('weights.halfYearGraph', ['id' => $data_id]) }}">半年</a>
                             <a class="dropdown-item" href="{{ route('weights.oneYearGraph', ['id' => $data_id]) }}">年間</a>
                         </div>

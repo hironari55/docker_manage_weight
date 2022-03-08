@@ -34,18 +34,24 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary w-100">
                                     ログイン
                                 </button>
-
+                            </div>
+                        </div>
+                        <div class="col-md-6 offset-md-4">
+                            <a class="border-bottom" href="{{ route('register') }}">
+                                会員登録はこちらから
+                            </a>
+                        </div>
+                        <div class="col-md-6 offset-md-4 mt-2">
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="border-bottom" href="{{ route('password.request') }}">
                                     パスワードを忘れた
                                 </a>
                                 @endif
-                            </div>
                         </div>
                     </form>
                 </div>
