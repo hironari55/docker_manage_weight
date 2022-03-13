@@ -33,8 +33,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/weights/manualWeightList', 'WeightsController@manualWeightList')->name('weights.manualWeightList');
 
 
-    Route::get('/weights/weekList', 'WeightsController@showWeightsWeekList')->name('weights.weekList');
-    Route::get('/weights/monthList', 'WeightsController@showWeightsMonthList')->name('weights.monthList');
+    Route::get('/weights/{period}/weightsList', 'WeightsController@showWeightsList')->name('weights.weightsList');
 
 
     Route::get('/weights/{id}/weekGraph', 'WeightsController@showWeightsWeekGraph')->name('weights.weekGraph');
@@ -42,8 +41,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/weights/{id}/threeMonthGraph', 'WeightsController@showWeightsThreeMonthGraph')->name('weights.threeMonthGraph');
     Route::get('/weights/{id}/halfYearGraph', 'WeightsController@showWeightsHalfYearGraph')->name('weights.halfYearGraph');
     Route::get('/weights/{id}/oneYearGraph', 'WeightsController@showWeightsOneYearGraph')->name('weights.oneYearGraph');
-
 });
 
+ # ゲストユーザーログイン
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
 Auth::routes();

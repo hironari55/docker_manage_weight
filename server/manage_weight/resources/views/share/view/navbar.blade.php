@@ -17,7 +17,7 @@
                     <a class="nav-link" href="{{ route('weights.weekGraph', ['id' => 1]) }}">折れ線グラフ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('weights.weekList') }}">記録リスト</a>
+                    <a class="nav-link" href="{{ route('weights.weightsList', ['period' => 'week']) }}">記録リスト</a>
                 </li>
             </ul>
 

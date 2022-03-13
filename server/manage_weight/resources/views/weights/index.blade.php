@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="card border-info  shadow-sm">
-    <div class="card-header bg-transparent border-info text-info d-flex justify-content-between align-items-center">
+    <div class="card-header bg-transparent border-info text-info d-flex justify-content-between align-items-center p-2">
         @if(!empty($previousDayWeight))
         <a href="{{ route('weights.index',['weight' => $previousDayWeight->id]) }}" class="text-align-center"><i class="fas fa-angle-left fa-2x"></i></a>
         @else
@@ -22,7 +22,7 @@
         @endif
     </div>
 
-    <div class="card-body text-info">
+    <div class="card-body text-info p-2">
         <div class="row d-flex justify-content-center">
             <div class="card border-info col-5 mx-2 my-2">
                 <div class="card-body p-0 py-2 text-center">
@@ -60,10 +60,10 @@
             </div>
         </div>
     </div>
-    <div class="card-footer bg-transparent border-info">
+    <div class="card-footer bg-transparent border-info p-2">
         <a href="{{ route('weights.edit',['weight' => $weight->id]) }}" class="btn btn-outline-info w-100">編集</a>
     </div>
-    <div class="card-footer bg-transparent border-info">
+    <div class="card-footer bg-transparent border-info p-2">
         <a href="{{ route('weights.create') }}" class="btn btn-outline-info w-100">記録追加(今日以前)</a>
     </div>
 </div>

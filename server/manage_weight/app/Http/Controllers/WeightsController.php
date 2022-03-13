@@ -120,15 +120,22 @@ class WeightsController extends Controller
         ]);
     }
 
-    public function showWeightsMonthList()
+    public function showWeightsList(string $period)
     {
-        $lastMonthDay = new Carbon('last month');
+        #週刊リスト用データ
+        $lastWeekDay = new Carbon('-7 days');
+        $lastWeekDays = $this->getDatesOfPeriod($lastWeekDay);
 
+        #月間リスト用データ
+        $lastMonthDay = new Carbon('last month');
         $lastMonthDays = $this->getDatesOfPeriod($lastMonthDay);
 
-        return view('weights/monthList', [
+        return view('weights/weightsList', [
+            'lastWeekDay' => $lastWeekDay,
+            'lastWeekDays' => $lastWeekDays,
             'lastMonthDay' => $lastMonthDay,
             'lastMonthDays' => $lastMonthDays,
+            'period' => $period,
         ]);
     }
 

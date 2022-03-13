@@ -41,7 +41,14 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="col-md-6 offset-md-4">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-4">
+                                    <a href="{{ route('login.guest') }}" class="btn btn-primary w-100">
+                                        ゲストログイン
+                                    </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 offset-md-4 mt-2">
                             <a class="border-bottom" href="{{ route('register') }}">
                                 会員登録はこちらから
                             </a>
