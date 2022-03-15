@@ -108,17 +108,6 @@ class WeightsController extends Controller
         return view('weights/manualWeightList');
     }
 
-    public function showWeightsWeekList()
-    {
-        $lastWeekDay = new Carbon('-7 days');
-
-        $lastWeekDays = $this->getDatesOfPeriod($lastWeekDay);
-
-        return view('weights/weekList', [
-            'lastWeekDay' => $lastWeekDay,
-            'lastWeekDays' => $lastWeekDays,
-        ]);
-    }
 
     public function showWeightsList(string $period)
     {
@@ -139,88 +128,39 @@ class WeightsController extends Controller
         ]);
     }
 
-    public function showWeightsWeekGraph(int $id)
+    public function showWeightGraph(string $dataType, string $period)
     {
         $lastWeekDay = new Carbon('-7 days');
-        $lastWeekDays = $this->getDatesOfPeriod($lastWeekDay);
-
-        $period = '(週間)';
-        $eachGraphData = $this->getEachGraphData($lastWeekDays, $id);
-
-        return view('weights/weekGraph', [
-            'eachDate' => $eachGraphData['eachDate'],
-            'dataLabel' => $eachGraphData['dataLabel'],
-            'eachWeightData' => $eachGraphData['eachWeightData'],
-            'data_id' => $id,
-            'period' => $period,
-        ]);
-    }
-
-    public  function showWeightsOneMonthGraph(int $id)
-    {
         $oneMonthBeforeDay = new Carbon('last month');
-        $lastMonthDays = $this->getDatesOfPeriod($oneMonthBeforeDay);
-
-        $period = '(月間)';
-        $eachGraphData = $this->getEachGraphData($lastMonthDays, $id);
-
-        return view('weights/oneMonthGraph', [
-            'eachDate' => $eachGraphData['eachDate'],
-            'dataLabel' => $eachGraphData['dataLabel'],
-            'eachWeightData' => $eachGraphData['eachWeightData'],
-            'data_id' => $id,
-            'period' => $period,
-        ]);
-    }
-
-    public  function showWeightsThreeMonthGraph(int $id)
-    {
         $threeMonthBefore = new Carbon('-3 month');
-        $lastThreeMonthDays = $this->getDatesOfPeriod($threeMonthBefore);
-
-        $period = '(3ヶ月間)';
-        $eachGraphData = $this->getEachGraphData($lastThreeMonthDays, $id);
-
-        return view('weights/threeMonthGraph', [
-            'eachDate' => $eachGraphData['eachDate'],
-            'dataLabel' => $eachGraphData['dataLabel'],
-            'eachWeightData' => $eachGraphData['eachWeightData'],
-            'data_id' => $id,
-            'period' => $period,
-        ]);
-    }
-
-    public  function showWeightsHalfYearGraph(int $id)
-    {
         $halfYearBefore = new Carbon('-6 month');
-        $lastHalfYearDays = $this->getDatesOfPeriod($halfYearBefore);
-
-        $period = '(半年間)';
-        $eachGraphData = $this->getEachGraphData($lastHalfYearDays, $id);
-
-        return view('weights/halfYearGraph', [
-            'eachDate' => $eachGraphData['eachDate'],
-            'dataLabel' => $eachGraphData['dataLabel'],
-            'eachWeightData' => $eachGraphData['eachWeightData'],
-            'data_id' => $id,
-            'period' => $period,
-        ]);
-    }
-
-    public  function showWeightsOneYearGraph(int $id)
-    {
         $oneYearBefore = new Carbon('last year');
-        $lastYearDays = $this->getDatesOfPeriod($oneYearBefore);
 
-        $period = '(年間)';
+        if($period === 'week') {
+            $days = $this->getDatesOfPeriod($lastWeekDay);
+            $displayPeriod = '(週間)';
+        } elseif ($period === 'month') {
+            $days = $this->getDatesOfPeriod($oneMonthBeforeDay);
+            $displayPeriod = '(月間)';
+        } elseif ($period === 'threeMonth') {
+            $days = $this->getDatesOfPeriod($threeMonthBefore);
+            $displayPeriod = '(3か月間)';
+        } elseif ($period === 'halfYear') {
+            $days = $this->getDatesOfPeriod($halfYearBefore);
+            $displayPeriod = '(半年間)';
+        } elseif ($period === 'oneYear') {
+            $days = $this->getDatesOfPeriod($oneYearBefore);
+            $displayPeriod = '(年間)';
+        }
 
-        $eachGraphData = $this->getEachGraphData($lastYearDays, $id);
+        $eachGraphData = $this->getEachGraphData($days, $dataType);
 
-        return view('weights/oneYearGraph', [
+        return view('weights/weightGraph', [
             'eachDate' => $eachGraphData['eachDate'],
             'dataLabel' => $eachGraphData['dataLabel'],
             'eachWeightData' => $eachGraphData['eachWeightData'],
-            'data_id' => $id,
+            'displayPeriod' => $displayPeriod,
+            'dataType' => $dataType,
             'period' => $period,
         ]);
     }
@@ -230,7 +170,7 @@ class WeightsController extends Controller
         return Auth::user()->weights()->whereDate('date', '>=', $beforeDay->format('Y/m/d'))->get()->sortby('date');
     }
 
-    private function getEachGraphData($days, $id)
+    private function getEachGraphData($days, $dataType)
     {
         if (count($days) === 0) {
             $eachDate[] = '';
@@ -239,19 +179,19 @@ class WeightsController extends Controller
         } else {
             foreach ($days as $day) {
                 $eachDate[] = date('m/d', strtotime($day->date));
-                if ($id === 1) {
+                if ($dataType === 'bodyWeight') {
                     $eachWeightData[] = $day->weight;
                     $dataLabel = '体重';
-                } elseif ($id === 2) {
+                } elseif ($dataType === 'fatPercentage') {
                     $eachWeightData[] = $day->fat_percentage;
                     $dataLabel = '体脂肪率';
-                } elseif ($id === 3) {
+                } elseif ($dataType === 'muscleWeight') {
                     $eachWeightData[] = $day->muscle_weight;
                     $dataLabel = '筋肉量';
-                } elseif ($id === 4) {
+                } elseif ($dataType === 'fatWeight') {
                     $eachWeightData[] = $day->fat_weight;
                     $dataLabel = '脂肪量';
-                } elseif ($id === 5) {
+                } elseif ($dataType === 'calorieIntake') {
                     $eachWeightData[] = $day->calorie_intake;
                     $dataLabel = '摂取カロリー';
                 } else {
