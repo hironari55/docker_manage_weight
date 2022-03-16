@@ -1,5 +1,3 @@
-# manage_weight
-
 <p align="center">
   <img src="./manage-weight-cover.png" alt="" width="100%">
 </p>
