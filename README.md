@@ -14,3 +14,6 @@
 </p>
 
 # ER図
+<p align="center">
+  <img src="./ER.png" alt="" width="100%">
+</p>
