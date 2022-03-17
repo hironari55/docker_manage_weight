@@ -57,3 +57,6 @@
 
 # 何ができるのか
 ### 1.トップページ
+<p align="center">
+  <img src="./manage-weight-login.png" alt="" width="100%">
+</p>
