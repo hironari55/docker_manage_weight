@@ -147,6 +147,7 @@
 - 日付の重複、体重未記入、数字以外の記入、正常な範囲外の記入の場合はバリデーションエラーを表示します。
 
 、、、
+
 class CreateWeights extends FormRequest
 {
     /* *
@@ -190,6 +191,7 @@ class CreateWeights extends FormRequest
         ];
     }
 }
+
 、、、
 
 ### 11.工夫したところ(見た目)
