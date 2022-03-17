@@ -133,11 +133,11 @@
 
 ### 10.バリデーション
 <p align="center">
-  <img src="./responsive.png" alt="" width="100%">
+  <img src="./login-validate.png" alt="" width="100%">
 </p>
 
 <p align="center">
-  <img src="./responsive.png" alt="" width="100%">
+  <img src="./record-validate.png" alt="" width="100%">
 </p>
 
 ### 11.工夫したところ(見た目)
