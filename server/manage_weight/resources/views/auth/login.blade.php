@@ -48,17 +48,21 @@
                                     </a>
                             </div>
                         </div>
-                        <div class="col-md-6 offset-md-4 mt-2">
-                            <a class="border-bottom" href="{{ route('register') }}">
-                                会員登録はこちらから
-                            </a>
-                        </div>
-                        <div class="col-md-6 offset-md-4 mt-2">
-                                @if (Route::has('password.request'))
-                                <a class="border-bottom" href="{{ route('password.request') }}">
-                                    パスワードを忘れた
+                        <div class="row">
+                            <div class="col-md-6 offset-md-4 mt-3">
+                                <a class="border-bottom" href="{{ route('register') }}">
+                                    会員登録はこちらから
                                 </a>
-                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 offset-md-4 mt-2">
+                                    @if (Route::has('password.request'))
+                                    <a class="border-bottom" href="{{ route('password.request') }}">
+                                        パスワードを忘れた
+                                    </a>
+                                    @endif
+                            </div>
                         </div>
                     </form>
                 </div>
