@@ -126,11 +126,19 @@
 
 ### 9.レスポンシブ対応
 <p align="center">
-  <img src="./lost.png" alt="" width="100%">
+  <img src="./responsive.gif" alt="" width="100%">
 </p>
 
-### 10.バリデーション
+- Googleの検証機能を使用し、一番小さなサイズのスマホでもデザイン崩れの無いよう実装しました。
 
+### 10.バリデーション
+<p align="center">
+  <img src="./responsive.png" alt="" width="100%">
+</p>
+
+<p align="center">
+  <img src="./responsive.png" alt="" width="100%">
+</p>
 
 ### 11.工夫したところ(見た目)
 
