@@ -56,8 +56,7 @@
 |  9  |  使い方機能  |
 
 # 何ができるのか
-### 1.トップページ
 
 <p align="center">
-  <img src="./manage-weight-login.png" alt="">
+  <img src="./manage-weight-login.png" alt="" width="100%">
 </p>
