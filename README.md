@@ -58,5 +58,5 @@
 # 何ができるのか
 
 <p align="center">
-  <img src="./manage-weight-login.png" alt="" width="100%">
+  <img src="./manage-weight-cover.png" alt="" width="100%">
 </p>
