@@ -40,6 +40,8 @@
 - DB: MySQL
 - Webサーバー: Apache
 - Docker
+- Route53
+- SES
 
 
 # 機能一覧
