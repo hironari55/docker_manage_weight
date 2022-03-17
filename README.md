@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./manage-weight-cover.png" alt="" width="100%">
+  <img src="./images/manage-weight-cover.png" alt="" width="100%">
 </p>
 
 
