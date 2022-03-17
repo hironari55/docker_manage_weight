@@ -70,7 +70,7 @@
 
 ### 2.ユーザー認証
 <p align="center">
-  <img src="./" alt="" width="100%">
+  <img src="./login.gif" alt="" width="100%">
 </p>
 
 ### 3.ユーザー登録
