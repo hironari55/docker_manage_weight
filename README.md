@@ -137,7 +137,7 @@
 </p>
 
 <p align="center">
-  <img src="./.png" alt="" width="100%">
+  <img src="./record-validate.png" alt="" width="100%">
 </p>
 
 - ログイン時、メールアドレス、パスワードのどちらかが一致していない場合はバリデーションエラーを表示します
