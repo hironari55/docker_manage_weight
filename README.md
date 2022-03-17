@@ -82,24 +82,36 @@
 </p>
 
 - ユーザー情報はMySQLに記録されます。
-- ユーザーネーム,Eメールアドレス,パスワードを入力して登録。
+- ユーザーネーム、Eメールアドレス、パスワードを入力して登録。
 ### 4.体重記録
-
+<p align="center">
+  <img src="./record.gif" alt="" width="100%">
+</p>
 
 ### 5.記録編集
-
+<p align="center">
+  <img src="./edit.gif" alt="" width="100%">
+</p>
 
 ### 6.記録削除
-
+<p align="center">
+  <img src="./delete.gif" alt="" width="100%">
+</p>
 
 ### 7.記録折れ線グラフ
-
+<p align="center">
+  <img src="./graph.gif" alt="" width="100%">
+</p>
 
 ### 8.記録一覧
-
+<p align="center">
+  <img src="./lost.gif" alt="" width="100%">
+</p>
 
 ### 9.レスポンシブ対応
-
+<p align="center">
+  <img src="./lost.png" alt="" width="100%">
+</p>
 
 ### 10.バリデーション
 
