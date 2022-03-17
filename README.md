@@ -59,5 +59,5 @@
 ### 1.トップページ
 
 <p align="center">
-  <img src="./manage-weight-login.png" alt="" width="100%">
+  <img src="./" alt="" width="100%">
 </p>
