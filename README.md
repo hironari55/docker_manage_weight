@@ -12,21 +12,21 @@
 - URL: http://manage-weight.link
 - ゲストログインボタンで簡単にログインできます。
 <p align="center">
-  <img src="./guest-login.png" alt="" width="100%">
+  <img src="./images/guest-login.png" alt="" width="100%">
 </p>
 
 
 
 # ER図
 <p align="center">
-  <img src="./ER.png" alt="" width="100%">
+  <img src="./images/ER.png" alt="" width="100%">
 </p>
 
 
 
 # インフラ構成図
 <p align="center">
-  <img src="./infrastructure.png" alt="" width="100%">
+  <img src="./images/infrastructure.png" alt="" width="100%">
 </p>
 
 
@@ -63,7 +63,7 @@
 ### 1.トップページ
 
 <p align="center">
-  <img src="./manage-weight-login.png" alt="" width="100%">
+  <img src="./images/manage-weight-login.png" alt="" width="100%">
 </p>
 
 - 最初にトップページにアクセスするとログイン画面に遷移します。
@@ -72,21 +72,21 @@
 
 ### 2.ユーザー認証
 <p align="center">
-  <img src="./login.gif" alt="" width="100%">
+  <img src="./images/login.gif" alt="" width="100%">
 </p>
 
 - メールアドレスとパスワードを入力してログインします
 
 ### 3.ユーザー登録
 <p align="center">
-  <img src="./register.gif" alt="" width="100%">
+  <img src="./images/register.gif" alt="" width="100%">
 </p>
 
 - ユーザー情報はMySQLに記録されます。
 - ユーザーネーム、Eメールアドレス、パスワードを入力して登録。
 ### 4.体重記録
 <p align="center">
-  <img src="./record.gif" alt="" width="100%">
+  <img src="./images/record.gif" alt="" width="100%">
 </p>
 
 - ログイン後、本日の記録がまだ無い場合は記録画面に遷移します。
@@ -95,7 +95,7 @@
 
 ### 5.記録編集
 <p align="center">
-  <img src="./edit.gif" alt="" width="100%">
+  <img src="./images/edit.gif" alt="" width="100%">
 </p>
 
 - 編集ボタンで記録の編集が可能です。
@@ -103,7 +103,7 @@
 
 ### 6.記録削除
 <p align="center">
-  <img src="./delete.gif" alt="" width="100%">
+  <img src="./images/delete.gif" alt="" width="100%">
 </p>
 
 - 編集画面に遷移後、削除ボタンを押すことで記録の削除が可能です。
@@ -111,7 +111,7 @@
 
 ### 7.記録折れ線グラフ
 <p align="center">
-  <img src="./graph.gif" alt="" width="100%">
+  <img src="./images/graph.gif" alt="" width="100%">
 </p>
 
 - メニューバーの折れ線グラフを押すことで、折れ線グラフ画面に遷移します。
@@ -119,7 +119,7 @@
 
 ### 8.記録一覧
 <p align="center">
-  <img src="./list.gif" alt="" width="100%">
+  <img src="./images/list.gif" alt="" width="100%">
 </p>
 
 - メニューバーの記録リストを押すことで、記録リスト画面に遷移します。テーブル表示された記録を閲覧可能です。
@@ -128,18 +128,18 @@
 
 ### 9.レスポンシブ対応
 <p align="center">
-  <img src="./responsive.gif" alt="" width="100%">
+  <img src="./images/responsive.gif" alt="" width="100%">
 </p>
 
 - Googleの検証機能を使用し、一番小さなサイズのスマホでもデザイン崩れの無いよう実装しました。
 
 ### 10.バリデーション
 <p align="center">
-  <img src="./login-validate.png" alt="" width="100%">
+  <img src="./images/login-validate.png" alt="" width="100%">
 </p>
 
 <p align="center">
-  <img src="./record-validate.png" alt="" width="100%">
+  <img src="./images/record-validate.png" alt="" width="100%">
 </p>
 
 - ログイン時、メールアドレス、パスワードのどちらかが一致していない場合はバリデーションエラーを表示します
