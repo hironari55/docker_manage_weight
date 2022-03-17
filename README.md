@@ -79,7 +79,7 @@
 <p align="center">
   <img src="./register.gif" alt="" width="100%">
 </p>
-- ユーザー情報はMySQLに記録されます
+- ユーザー情報はMySQLに記録されます。
 - ユーザーネーム,Eメールアドレス,パスワードを入力して登録。
 
 ### 4.体重記録
