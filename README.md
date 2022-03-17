@@ -26,7 +26,7 @@
 
 # インフラ構成図
 <p align="center">
-  <img src="./.png" alt="" width="100%">
+  <img src="./infrastructure.png" alt="" width="100%">
 </p>
 
 
