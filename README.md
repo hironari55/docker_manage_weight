@@ -39,9 +39,9 @@
 - jQuery
 - DB: MySQL
 - Webサーバー: Apache
-- Docker
-- Route53
-- SES
+- 開発環境Docker
+- ドメイン: Route53
+- メールサーバー: SES
 
 
 # 機能一覧
