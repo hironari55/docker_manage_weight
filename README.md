@@ -196,7 +196,7 @@ class CreateWeights extends FormRequest
 - 水色を基調としたシンプルなデザインにしました。
 - 折れ線グラフで、記録の推移を見やすくしました。
 - 記録リストのテーブルデザインは、<br>スマホ画面ではスライドすることでデザイン崩せず閲覧可能にしました。
-- 
+
 - 単日の記録画面にて記録項目毎に枠で囲むことで見やすいデザインにしました。
 <p align="center">
   <img src="./images/day-record.png" alt="" width="100%">
