@@ -239,3 +239,45 @@ class HomeController extends Controller
 <p align="center">
   <img src="./images/day-record-move.gif" alt="" width="100%">
 </p>
+controllerファイル
+```
+class WeightsController extends Controller
+{
+    public function index(Weight $weight)
+    {
+        $weights = Auth::user()->weights()->get()->sortBy('date');
+
+        $previousWeight = $weights->where('date', '<', $weight->date)->last();
+        $nextWeight = $weights->where('date', '>', $weight->date)->first();
+
+        return view('weights/index', [
+            'weight' => $weight,
+            'previousDayWeight' => $previousWeight,
+            'nextDayWeight' => $nextWeight,
+        ]);
+    }
+    /* 中略 */
+}
+```
+viewファイル
+```
+<div class="card border-info  shadow-sm">
+    <div class="card-header bg-transparent border-info text-info d-flex justify-content-between align-items-center p-2">
+        @if(!empty($previousDayWeight))
+        <a href="{{ route('weights.index',['weight' => $previousDayWeight->id]) }}" class="text-align-center"><i class="fas fa-angle-left fa-2x"></i></a>
+        @else
+        <div class="text-secondary"><i class="fas fa-angle-left fa-2x"></i></div>
+        @endif
+        <div class="text-center">
+            <h5>日付</h5>
+            <h4 class="mb-0">{{$weight->date}}</h4>
+        </div>
+        @if(!empty($nextDayWeight))
+        <a href="{{ route('weights.index',['weight' => $nextDayWeight->id]) }}"><i class="fas fa-angle-right fa-2x"></i></a>
+        @else
+        <div class="text-secondary"><i class="fas fa-angle-right fa-2x"></i></div>
+        @endif
+    </div>
+    /* 中略 */
+</div>
+```
