@@ -239,7 +239,9 @@ class HomeController extends Controller
 <p align="center">
   <img src="./images/day-record-move.gif" alt="" width="100%">
 </p>
+
 controllerファイル
+
 ```
 class WeightsController extends Controller
 {
@@ -259,7 +261,9 @@ class WeightsController extends Controller
     /* 中略 */
 }
 ```
+
 viewファイル
+
 ```
 <div class="card border-info  shadow-sm">
     <div class="card-header bg-transparent border-info text-info d-flex justify-content-between align-items-center p-2">
