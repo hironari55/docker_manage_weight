@@ -237,5 +237,5 @@ class HomeController extends Controller
 
 - 単日の記録画面にて、日付横の矢印を押すことで、記録した日のみ前後の記録を閲覧できるようにしました。<br>矢印の色を、前または後のデータがある場合は青、ない場合は灰色にすることで視覚的にわかりやすくしました。
 <p align="center">
-  <img src="./images/day-record-move.png" alt="" width="100%">
+  <img src="./images/day-record-move.gif" alt="" width="100%">
 </p>
