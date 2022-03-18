@@ -10,6 +10,11 @@ use Carbon\Carbon;
 
 class WeightsController extends Controller
 {
+    public function first()
+    {
+        return view('weights/first');
+    }
+
     public function index(Weight $weight)
     {
         $weights = Auth::user()->weights()->get()->sortBy('date');

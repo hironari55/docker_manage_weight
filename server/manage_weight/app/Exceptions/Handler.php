@@ -2,6 +2,9 @@
 
 namespace App\Exceptions;
 
+# ログインページ以外にリダイレクト用
+use Illuminate\Auth\AuthenticationException;
+
 use Illuminate\Session\TokenMismatchException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -53,5 +56,11 @@ class Handler extends ExceptionHandler
         }
 
         return parent::render($request, $exception);
+    }
+
+    # URLのみを打ち込んだ際のリダイレクト先を設定
+    public function unauthenticated($request, AuthenticationException $exception)
+    {
+        return redirect()->guest(route('weithts.first'));
     }
 }

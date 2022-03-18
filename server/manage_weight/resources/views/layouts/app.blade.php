@@ -7,10 +7,8 @@
     <div id="app">
         @include('share.view.navbar')
 
-        <main class="pt-5 mt-3">
-            <div class="container h-auto">
-                @yield('content')
-            </div>
+        <main>
+            @yield('content')
         </main>
     </div>
 

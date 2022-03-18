@@ -38,7 +38,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/weights/{dataType}/{period}/weightGraph', 'WeightsController@showWeightGraph')->name('weights.weightGraph');
 });
 
- # ゲストユーザーログイン
+# ゲストユーザーログイン
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
+# Laravel認証設定
 Auth::routes();
+
+Route::get('welcome','WeightsController@first' )->name('weithts.first');
