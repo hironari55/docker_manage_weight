@@ -197,12 +197,45 @@ class CreateWeights extends FormRequest
 - 折れ線グラフで、記録の推移を見やすくしました。
 - 記録リストのテーブルデザインは、<br>スマホ画面ではスライドすることでデザイン崩せず閲覧可能にしました。
 
-- 単日の記録画面にて記録項目毎に枠で囲むことで見やすいデザインにしました。
+
+- 単日の記録閲覧画面にて記録項目毎に枠で囲むことで見やすいデザインにしました。
 <p align="center">
   <img src="./images/day-record.png" alt="" width="100%">
 </p>
 
 ### 12.工夫したところ(実装)
-- ログイン後、すぐに体重記録画面に遷移するようにしました。
-- 折れ線グラフでは最長１年前から現在までの記録の推移を閲覧できるようににしました。
-- 単日の記録画面にて、日付横の矢印を押すことで、記録した日のみ前後の記録を閲覧できるようにしました。
+- ログイン後、すぐに体重記録画面に遷移するようにしました。(既にその日のデータが記録してある場合は単日の記録閲覧画面に遷移)
+```
+class HomeController extends Controller
+{
+    /* 中略 */
+    
+    public function index()
+    {
+        $weights = Auth::user()->weights()->get()->sortby('date');
+        $lastDay = $weights->last();
+
+        /* 最終日がある場合とない場合で場合分け */
+        if(!empty($lastDay)){
+            /* その日のデータがある場合とない場合で場合分け */
+            if(date('Y-m-d') === $lastDay->date) {
+                return redirect()->route('weights.index', [
+                'weight' => $lastDay->id,
+                ]);
+            } else {
+                return view('weights/create');
+            }
+        } else {
+            return view('weights/create');
+        }
+    }
+}
+```
+
+- 折れ線グラフでは週間、1か月間、３か月間、半年間、年間の中から期間選択して記録を表示できるようにしました。
+
+
+- 単日の記録画面にて、日付横の矢印を押すことで、記録した日のみ前後の記録を閲覧できるようにしました。<br>矢印の色を、前または後のデータがある場合は青、ない場合は灰色にすることで視覚的にわかりやすくしました。
+<p align="center">
+  <img src="./images/day-record-move.png" alt="" width="100%">
+</p>
