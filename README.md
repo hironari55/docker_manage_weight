@@ -12,7 +12,7 @@
 - URL: http://manage-weight.link
 - ゲストログインボタンで簡単にログインできます。
 <p align="center">
-  <img src="./images/guest-login.png" alt="" width="100%">
+  <img src="./images/" alt="" width="100%">
 </p>
 
 
