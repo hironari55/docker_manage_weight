@@ -285,9 +285,9 @@ class HomeController extends Controller
 ```
 
 - 折れ線グラフでは週間、1か月間、３か月間、半年間、年間の中から期間選択して記録を表示できるようにしました。
-controllerファイル
 
 <br>
+controllerファイル
 
 ```
 public function showWeightGraph(string $dataType, string $period)
@@ -371,6 +371,7 @@ public function showWeightGraph(string $dataType, string $period)
 ```
 
 <br>
+viewファイル
 
 ```
 @extends('layouts.graph')
@@ -419,7 +420,6 @@ public function showWeightGraph(string $dataType, string $period)
 </p>
 
 <br>
-
 controllerファイル
 
 ```
@@ -443,7 +443,6 @@ class WeightsController extends Controller
 ```
 
 <br>
-
 viewファイル
 
 ```
