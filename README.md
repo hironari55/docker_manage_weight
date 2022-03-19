@@ -259,6 +259,7 @@ class CreateWeights extends FormRequest
 - ログイン後、すぐに体重記録画面に遷移するようにしました。(既にその日のデータが記録してある場合は単日の記録閲覧画面に遷移)
 <br>
 controllerファイル
+
 ```
 class HomeController extends Controller
 {
@@ -293,6 +294,7 @@ class HomeController extends Controller
 - 折れ線グラフでは週間、1か月間、３か月間、半年間、年間の中から期間選択して記録を表示できるようにしました。
 <br>
 controllerファイル
+
 ```
 public function showWeightGraph(string $dataType, string $period)
     {
