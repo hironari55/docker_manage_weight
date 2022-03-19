@@ -42,14 +42,47 @@
     </div>
 </div>
 
-<div class="d-flex justify-content-around text-center my-5">
-    <div>
-        <h5 class="mb-1">機能詳細</h5>
-        <a href="https://github.com/hironari55/manage_weight" class="btn btn-primary">GitHub,README</a>
-    </div>
-    <div>
-        <h5 class="mb-1">経歴</h5>
-        <a href="https://www.wantedly.com/id/oregahironari_com" class="btn btn-primary">wantedlyプロフィール</a>
+<div class="container py-2 my-3 fastidiousness">
+    <h5>こだわり(見た目)</h5>
+    <ul>
+        <li>トップページにイメージ画像を表示することでアプリを想像しやすくしました。</li>
+        <li>水色を基調としたシンプルなデザインにしました。</li>
+        <li>折れ線グラフで、記録の推移を見やすくしました。</li>
+        <li>レスポンシブデザインでスマホ画面から閲覧してもデザイン崩れのないようにしました。</li>
+        <li>単日の記録閲覧画面にて記録項目毎に枠で囲むことで見やすいデザインにしました。</li>
+    </ul>
+</div>
+
+<div class="container py-2 my-3 fastidiousness">
+    <h5>こだわり(実装)</h5>
+    <ul>
+        <li>ログイン後、すぐに体重記録画面に遷移するようにしました。(既にその日のデータが記録してある場合は単日の記録閲覧画面に遷移)</li>
+        <li>折れ線グラフでは週間、1か月間、3か月間、半年間、年間の中から期間選択して記録を表示できるようにしました。</li>
+        <li>単日の記録画面にて、日付横の矢印を押すことで、記録した日のみ前後の記録を閲覧できるようにしました。
+矢印の色を、前または後のデータがある場合は青、ない場合は灰色にすることで視覚的にわかりやすくしました。</li>
+    </ul>
+</div>
+
+<div class="container d-flex justify-content-around text-center my-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card border-info my-3 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">機能詳細はこちら</h5>
+                    <p class="card-text">GitHub, READMEにてインフラ構成図やER図、gifなどを用いて詳細を説明しております。</p>
+                    <a href="https://github.com/hironari55/manage_weight" class="btn btn-primary">GitHub,README</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card border-info my-3 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">経歴はこちら</h5>
+                    <p class="card-text">wantedlyプロフィールにて経歴や自己紹介など記載しております</p>
+                    <a href="https://www.wantedly.com/id/oregahironari_com" class="btn btn-primary">wantedlyプロフィール</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
