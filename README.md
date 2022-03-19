@@ -285,6 +285,131 @@ class HomeController extends Controller
 ```
 
 - 折れ線グラフでは週間、1か月間、３か月間、半年間、年間の中から期間選択して記録を表示できるようにしました。
+controllerファイル
+
+<br>
+
+```
+public function showWeightGraph(string $dataType, string $period)
+    {
+        $lastWeekDay = new Carbon('-7 days');
+        $oneMonthBeforeDay = new Carbon('last month');
+        $threeMonthBefore = new Carbon('-3 month');
+        $halfYearBefore = new Carbon('-6 month');
+        $oneYearBefore = new Carbon('last year');
+
+        if($period === 'week') {
+            $days = $this->getDatesOfPeriod($lastWeekDay);
+            $displayPeriod = '(週間)';
+        } elseif ($period === 'month') {
+            $days = $this->getDatesOfPeriod($oneMonthBeforeDay);
+            $displayPeriod = '(月間)';
+        } elseif ($period === 'threeMonth') {
+            $days = $this->getDatesOfPeriod($threeMonthBefore);
+            $displayPeriod = '(3か月間)';
+        } elseif ($period === 'halfYear') {
+            $days = $this->getDatesOfPeriod($halfYearBefore);
+            $displayPeriod = '(半年間)';
+        } elseif ($period === 'oneYear') {
+            $days = $this->getDatesOfPeriod($oneYearBefore);
+            $displayPeriod = '(年間)';
+        }
+
+        $eachGraphData = $this->getEachGraphData($days, $dataType);
+
+        return view('weights/weightGraph', [
+            'eachDate' => $eachGraphData['eachDate'],
+            'dataLabel' => $eachGraphData['dataLabel'],
+            'eachWeightData' => $eachGraphData['eachWeightData'],
+            'displayPeriod' => $displayPeriod,
+            'dataType' => $dataType,
+            'period' => $period,
+        ]);
+    }
+
+    private function getDatesOfPeriod($beforeDay)
+    {
+        return Auth::user()->weights()->whereDate('date', '>=', $beforeDay->format('Y/m/d'))->get()->sortby('date');
+    }
+
+    private function getEachGraphData($days, $dataType)
+    {
+        if (count($days) === 0) {
+            $eachDate[] = '';
+            $eachWeightData[] = '';
+            $dataLabel = '';
+        } else {
+            foreach ($days as $day) {
+                $eachDate[] = date('m/d', strtotime($day->date));
+                if ($dataType === 'bodyWeight') {
+                    $eachWeightData[] = $day->weight;
+                    $dataLabel = '体重';
+                } elseif ($dataType === 'fatPercentage') {
+                    $eachWeightData[] = $day->fat_percentage;
+                    $dataLabel = '体脂肪率';
+                } elseif ($dataType === 'muscleWeight') {
+                    $eachWeightData[] = $day->muscle_weight;
+                    $dataLabel = '筋肉量';
+                } elseif ($dataType === 'fatWeight') {
+                    $eachWeightData[] = $day->fat_weight;
+                    $dataLabel = '脂肪量';
+                } elseif ($dataType === 'calorieIntake') {
+                    $eachWeightData[] = $day->calorie_intake;
+                    $dataLabel = '摂取カロリー';
+                } else {
+                    abort(404);
+                }
+            }
+        }
+
+        return [
+            'eachDate' => $eachDate,
+            'eachWeightData' => $eachWeightData,
+            'dataLabel' => $dataLabel,
+        ];
+    }
+```
+
+<br>
+
+```
+@extends('layouts.graph')
+
+@section('title', 'weight_graph')
+
+@section('content')
+<div class="container">
+    <div class="d-flex mt-3">
+        <div class="dropdown">
+            <a class="btn btn-outline-info dropdown-toggle p-1" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                グラフデータ選択
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => 'bodyWeight', 'period' => $period]) }}">体重</a>
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => 'fatPercentage', 'period' => $period]) }}">体脂肪率</a>
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => 'muscleWeight', 'period' => $period]) }}">筋肉量</a>
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => 'fatWeight', 'period' => $period]) }}">脂肪量</a>
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => 'calorieIntake', 'period' => $period]) }}">摂取カロリー</a>
+            </div>
+        </div>
+        <div class="dropdown mx-2">
+            <a class="btn btn-outline-info dropdown-toggle p-1" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                期間選択
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => $dataType, 'period' => 'week']) }}">週間</a>
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => $dataType, 'period' => 'month']) }}">月間</a>
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => $dataType, 'period' => 'threeMonth']) }}">3ヶ月</a>
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => $dataType, 'period' => 'halfYear']) }}">半年</a>
+                <a class="dropdown-item" href="{{ route('weights.weightGraph', ['dataType' => $dataType, 'period' => 'oneYear']) }}">年間</a>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="weights" class="w-100 mt-4"></canvas>
+</div>
+@endsection
+```
 
 <br>
 
