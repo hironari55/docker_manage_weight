@@ -259,7 +259,6 @@ class CreateWeights extends FormRequest
 - ログイン後、すぐに体重記録画面に遷移するようにしました。(既にその日のデータが記録してある場合は単日の記録閲覧画面に遷移)
 <br>
 controllerファイル
-
 ```
 class HomeController extends Controller
 {
@@ -289,11 +288,11 @@ class HomeController extends Controller
 
 <br>
 <br>
+<br>
 
 - 折れ線グラフでは週間、1か月間、３か月間、半年間、年間の中から期間選択して記録を表示できるようにしました。
 <br>
 controllerファイル
-
 ```
 public function showWeightGraph(string $dataType, string $period)
     {
@@ -417,6 +416,8 @@ viewファイル
 @endsection
 ```
 
+<br>
+<br>
 <br>
 
 - 単日の記録画面にて、日付横の矢印を押すことで、記録した日のみ前後の記録を閲覧できるようにしました。<br>矢印の色を、前または後のデータがある場合は青、ない場合は灰色にすることで視覚的にわかりやすくしました。
